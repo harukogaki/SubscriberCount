@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    Hey
+    Live Subscriber Count
   </div>
 </template>
 
