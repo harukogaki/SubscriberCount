@@ -1,4 +1,4 @@
-# todos-app
+# Subscriber Count
 
 ## Project setup
 ```
