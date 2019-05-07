@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "prebuild": "npm run test:unit",
+    "lambda-serve": "netlify-lambda serve ./functions",
+    "lambda-build": "netlify-lambda build",
+    "prebuild": "npm run lint; npm run test:unit",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "netlify-lambda": "^1.4.7",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -19,6 +22,7 @@
     "@vue/cli-plugin-unit-jest": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
