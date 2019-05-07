@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0ef3796e-576c-4436-b330-5c2cfadb4f28/deploy-status)](https://app.netlify.com/sites/youtubesubscribercount/deploys)
+
 # Subscriber Count
 
 ## Project setup
