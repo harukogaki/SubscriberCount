@@ -2,6 +2,17 @@
 
 # Subscriber Count
 
+## Dotenv vs Netlify
+Make sure to exclude `.env` before committing any changes. This file is not meant to be pushed but for added convenience in local development samples have been pushed.
+```
+git update-index --asume-unchanged .env
+```
+
+If you want to add new samples, make sure to add the appropriate environment variables in netlify, and push changes forcefully
+```
+git add -f .env
+```
+
 ## Project setup
 ```
 yarn install
