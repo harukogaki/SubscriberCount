@@ -1,10 +1,11 @@
 const axios = require('axios');
+require('dotenv').config();
 
 exports.handler = (events, context, callback) => {
     const URL = 'https://www.googleapis.com/youtube/v3/channels';
     const part = 'statistics';
     const id = events.queryStringParameters.channelId ? events.queryStringParameters.channelId : '';
-    const key = process.env.YOUTUBE_API_KEY;
+    const key = process.env.VUE_APP_YOUTUBE_API_KEY;
 
     const send = (status, body) => {
         callback( null, { 

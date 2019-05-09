@@ -1,33 +1,32 @@
 <template>
   <div id="app">
-    Live Subscriber Count
-    <div> {{subscriberCount}} </div>
+    <subscriber-count :count="this.count"></subscriber-count>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import SubscriberCountVue from './components/SubscriberCount.vue';
 
 export default {
   name: 'app',
   data() {
-    return {subscriberCount: '', channelId: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw'}
+    return {count: '', channelId: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw'}
   },
   created: function() {
-     this.fetchYoutubeStats(this.channelId);
+    this.fetchYoutubeStats();
+    global.setInterval(this.fetchYoutubeStats, 1000);
+  },
+  components: {
+    'subscriber-count': SubscriberCountVue
   },
   methods: {
-      fetchYoutubeStats: async function (channelId) {
-        const response = await axios.get('/api/getYTInfo', {
-          headers: { 
-              'Content-Type' : 'application/json'
-          },
-          params: {
-            channelId
-          }
-        });
+    fetchYoutubeStats: async function () {
+      const response = await axios.get('/api/getYTInfo?channelId=' + this.channelId);
 
-        this.subscriberCount = response.data.items[0].statistics.subscriberCount;
+        if (response){
+          this.count = response.data.items[0].statistics.subscriberCount;
+        }
       }
     }
 }
