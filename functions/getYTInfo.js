@@ -4,7 +4,7 @@ require('dotenv').config();
 exports.handler = (events, context, callback) => {
     const URL = 'https://www.googleapis.com/youtube/v3/channels';
     const part = 'statistics';
-    const id = events.queryStringParameters.channelId ? events.queryStringParameters.channelId : '';
+    const forUsername = events.queryStringParameters.username ? events.queryStringParameters.username : '';
     const key = process.env.YOUTUBE_API_KEY;
 
     const send = (status, body) => {
@@ -18,7 +18,7 @@ exports.handler = (events, context, callback) => {
         headers: { 
             'Content-Type' : 'application/json'
         },
-        params: { part, id, key }
+        params: { part, forUsername, key }
     })  
       .then((response) => send(response.status, response.data))
       .catch((error) => send(error.status, error.data));

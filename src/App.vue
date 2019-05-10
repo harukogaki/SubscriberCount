@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <subscriber-count :count="this.count"></subscriber-count>
-  </div>
+    <v-app id="app">
+      <div class="subscriber-container">
+        <subscriber-count :count="this.count"></subscriber-count>
+      </div>
+    </v-app>
 </template>
 
 <script>
@@ -11,7 +13,7 @@ import SubscriberCountVue from './components/SubscriberCount.vue';
 export default {
   name: 'app',
   data() {
-    return {count: '', channelId: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw'}
+    return {count: '', username: 'PewdiePie'}
   },
   created: function() {
     this.fetchYoutubeStats();
@@ -22,7 +24,7 @@ export default {
   },
   methods: {
     fetchYoutubeStats: async function () {
-      const response = await axios.get('/api/getYTInfo?channelId=' + this.channelId);
+      const response = await axios.get('/api/getYTInfo?username=' + this.username);
 
         if (response){
           this.count = response.data.items[0].statistics.subscriberCount;
@@ -37,8 +39,11 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  font-size: 16px;
+}
+.subscriber-container {
+  text-align: center;
   margin-top: 60px;
 }
 </style>
